@@ -175,7 +175,7 @@
           <button class="btn secondary" id="confettiBtn">Pháo giấy 🎊</button>
           <button class="btn" id="heartsBtn">Hiệu ứng trái tim 💗</button>
           <button class="btn ghost" id="musicBtn">Phát nhạc 🎵</button>
-          <input type="url" id="musicUrl" class="url-input" placeholder="Dán link .mp3/.m4a/.ogg vào đây">
+<!--           <input type="url" id="musicUrl" class="url-input" placeholder="Dán link .mp3/.m4a/.ogg vào đây"> -->
           <button class="btn secondary" id="applyMusic">Áp dụng nhạc</button>
         </div>
 
@@ -333,7 +333,7 @@
     const musicUrlInput = qs('#musicUrl');
     const applyMusicBtn = qs('#applyMusic');
 
-    const defaultSrc = 'happy-birthday.mp3';          // nếu bạn để file cục bộ cạnh HTML
+    const defaultSrc = 'happy-birthday.mp3';          
     const savedSrc   = localStorage.getItem('hb_music_src');
 
     function setMusicSrc(src){
@@ -341,13 +341,12 @@
       try{
         music.src = src; music.load();
         localStorage.setItem('hb_music_src', src);
-        musicBtn.textContent = 'Phát nhạc 🎵'; // reset label
+        musicBtn.textContent = 'Phát nhạc 🎵'; 
       }catch(e){
         alert('Link nhạc không hợp lệ hoặc bị chặn.');
       }
     }
 
-    // Ưu tiên: ?music= → localStorage → default
     setMusicSrc(musicParam || savedSrc || defaultSrc);
 
     if (applyMusicBtn){
@@ -369,7 +368,7 @@
       }
     });
 
-    // Dọn nhẹ khi chuyển tab
+   
     document.addEventListener('visibilitychange', ()=>{
       if (document.hidden) { pieces.length = 0; }
     });
